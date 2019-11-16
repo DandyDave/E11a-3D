@@ -1,4 +1,4 @@
-Simple 3D exercise in Gdot for my game technology
+A Simple 3D exercise in Gdot for my game technology
 class at Indiana University.
 
 This project uses free 3D assets fron Kenny to make a simple
