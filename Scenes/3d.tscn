@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Platform_objects/BlockLarge.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Platform_objects/Grasshexsmall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Platform_objects/Grassslope.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=4]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 10, 10 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.462745, 0.623529, 0.145098, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, -5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 3 )
+
+[node name="Carmera Hub" type="Spatial" parent="."]
+transform = Transform( 0.816843, 0, -0.57686, 0, 1, 0, 0.57686, 0, 0.816843, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="Carmera Hub"]
+transform = Transform( 0.747066, 0, 0.66475, 0, 1, 0, -0.66475, 0, 0.747066, 3.17403, 1.43933, 4.38151 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.740023, 0.672582, 0, -0.672582, 0.740023, 1, 4.18127, 5.5044 )
+light_energy = 0.52
+
+[node name="BlockLarge" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00653, 0, -0.0784879 )
+
+[node name="Grass Hex Small" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29655, 0, 3.00334 )
+
+[node name="Grass Slope" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68128, 0, 3.2335 )
+
+[node name="Character" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64884, 0.792787 )
